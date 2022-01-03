@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="Music logo.png" rel="icon">
+    <title>Music 4</title>
+    <style>
+        #player{
+            height: 680px;
+            width: 500px;
+            display: block;
+            margin: auto;
+            background-color: cadetblue;
+            border-radius: 25px;
+            box-shadow: 15px 15px 15px grey;
+        }
+        .rotate{
+            animation: rotation 3s;
+        }
+        .linear{
+            animation-timing-function: linear;
+        }
+        .infinite{
+            animation-iteration-count: infinite;
+        }
+        @keyframes rotation{
+            from{transform:rotate(0deg);}
+            to{transform:rotate(359deg)}
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="player" style="padding-top: 25px;">
+            <img src="RANDOM.png" style="height: 300px; width: 300px; margin: auto; display: block; border-radius: 50%;" id="image" class="linear infinite">
+            <img src="previous.png" style="margin-top: 170px; display: inline-block; width: 20%;margin-left: 95px;" onclick="pre()">
+            <img src="play.png" style="margin-top: 170px; display: inline-block; width: 20%;" onclick="start()"  id="lol">
+            <img src="pause.png" style="margin-top: 170px; display: none; width: 20%;" onclick="pause()"  id="lol1">
+            <img src="next.png"  style="margin-top: 170px; display: inline-block; width: 20%;" onclick="next()">
+    </div>
+    <audio src="Ajooba.mp3" controls id="audio" style="display: none;"></audio>
+  
+    <script>
+        var images=["RANDOM.png","1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png","20.png","21.png","22.png","23.png","24.png","26.png","27.png","28.png","29.png","30.png","31.png","32.png","33.png","34.png","35.png","36.png","37.png","38.png","39.png","40.png","41.png"]
+        var player = false;
+        function start(){
+            document.getElementById("audio").play()
+            document.getElementById("lol").style.display="none"
+            document.getElementById("lol1").style.display="inline-block"
+            document.getElementById("image").classList.add("rotate")
+        }
+        function pause(){
+            document.getElementById("audio").pause()
+            document.getElementById("lol1").style.display="none"
+            document.getElementById("lol").style.display="inline-block"
+            document.getElementById("image").classList.remove("rotate")
+        }
+        var songs = ["Aao Milo Chalo.mp3","Abhi Toh Party Shuru Hui Hai.mp3","Badass Babuaa.mp3","Badtameez Dil.mp3","Balam Pichkari.mp3","Dil Dhadakne Do.mp3","Dilliwaali Girlfriend.mp3","Gallan Goodiyaan.mp3","Swing.mp3","Gulaabo.mp3","Gabru.mp3","HUMMA HUMMA2.mp3","Iktara.mp3","Ilahi.mp3","Kabira.mp3","Kar Gayi Chull.mp3","Kehna Hi Kya.mp3","Kuch Bhi Na Socho.mp3","Kuchchi Kuchchi Rakkamma.mp3","Maa Ka Phone.mp3","Main Tera Boyfriend.mp3","Mauja Ki Mauja.mp3","Mumbai Dilli Di Kudiyaan.mp3","Muqubla.mp3","Nagada Nagada.mp3","Nazm.mp3","Pehla Nasha.mp3","Pehli Baar.mp3","Phir Bhi Yeh Zindagi.mp3","Radha.mp3","Subhanallah.mp3","Sweety Tera Drama.mp3","Tamma Tamma Again.mp3","Disco.mp3","The Hook Up Song.mp3","The Jawaani Song.mp3","Tu Hi Re.mp3","Twist Kamariya.mp3","Udi Udi Jaye.mp3","Ye Ishq Hai.mp3","Yeh Tara Woh Tara.mp3","Yun Hi Chala Chal.mp3"];
+        var i = 0;
+        function next(){
+            i =(i+1)%42;
+            document.getElementById("audio").src= songs[i];
+            document.getElementById("image").src=images[i];
+            start()
+        }
+        function pre(){
+            if(i>0)
+            {
+                            i--;
+                            document.getElementById("audio").src = songs[i];
+                            document.getElementById("image").src=images[i]
+                            start()
+            }
+        }
+    </script>
+</body>
+</html>
